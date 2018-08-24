@@ -1,5 +1,6 @@
 package com.telus.test.response
 
+import com.telus.test.model.status.GroupData
 import com.telus.test.model.status.StatusNode
 import com.telus.test.model.status.StatusTopologyResponse
 import com.telus.test.model.tools.AndroidTable
@@ -40,7 +41,7 @@ class MockData{
         val tplg = StatusTopologyResponse(nodesMock(boostNumber))
         val installNodes = mapOf("nodes" to installedListMock(boostNumber))
 
-        return mapOf("tplg" to tplg, "installed_list" to installNodes)
+        return mapOf("tplg" to tplg, "installed_list" to installNodes, "group_id" to GroupData(groupId = "BH-TELUSWiFi0312"))
     }
 
     fun wifiConfigsMock(): WifiConfigListRequest = WifiConfigListRequest(wifiConfig = wifiConfigList)
@@ -58,7 +59,7 @@ class MockData{
             "2GL" to "table2",
             "p_table" to powerTableList)
 
-    fun resultOkMock() = mapOf("result" to "ok")
+    fun resultOkMock() = mapOf("result" to "OK")
 
     private fun nodesMock(boostNumber: Int = 0): List<StatusNode>{
         return boostList.dropLast(boostList.size - boostNumber)
